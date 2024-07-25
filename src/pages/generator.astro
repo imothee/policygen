@@ -1,0 +1,16 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import PolicyGenerator from "../components/PolicyGenerator.svelte";
+---
+
+<Layout title="Policygen - Online Policy Generator">
+  <div class="flex flex-row">
+    <div class="p-6 w-full rounded-lg mx-auto">
+      <div class="flex flex-row justify-between items-center">
+        <h1 class="text-2xl text-foreground">Generator</h1>
+      </div>
+      <PolicyGenerator client:load />
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,15 @@
+---
+interface Props {
+  pathname: string;
+  title: string;
+  href: string;
+}
+
+const { pathname, title, href } = Astro.props;
+const isActive = pathname === href;
+const className = `hover:text-accent-one ${isActive ? "text-accent-one" : ""}`;
+---
+
+<a href={href} class={className}>
+  {title}
+</a>

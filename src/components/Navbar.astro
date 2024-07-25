@@ -1,0 +1,39 @@
+---
+import Navlink from "./Navlink.astro";
+const pathname = new URL(Astro.request.url).pathname;
+---
+
+<nav class="pb-5 md:text-sm">
+  <div
+    class="gap-x-14 items-center max-w-screen-xl mx-auto px-4 md:flex md:px-8"
+  >
+    <div class="flex items-center justify-between py-5 md:block">
+      <a class="text-3xl font-bold text-foreground flex flex-row" href="/"
+        >Policygen</a
+      >
+    </div>
+    <div class="flex-1 items-center mt-8 md:mt-0 md:flex block">
+      <ul
+        class="justify-center items-center space-y-6 md:flex md:space-x-6 md:space-y-0 text-foreground"
+      >
+        <li>
+          <Navlink href="/generator" pathname={pathname} title="Generator" />
+        </li>
+        <li>
+          <Navlink
+            href="/policygen-rails"
+            pathname={pathname}
+            title="Policygen-rails"
+          />
+        </li>
+        <li>
+          <Navlink
+            href="/policygen-js"
+            pathname={pathname}
+            title="Policygen-js"
+          />
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
