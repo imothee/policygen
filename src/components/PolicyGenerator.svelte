@@ -1,7 +1,7 @@
 <script>
-  import Policygen from "policygen";
+  import Policygen from "policygen/client";
   import { DefaultConfiguration } from "policygen/configuration";
-  import { ConfigFields } from "policygen/config_fields";
+  import { ConfigFields } from "policygen/config-fields";
 
   const config = {
     ...DefaultConfiguration,
