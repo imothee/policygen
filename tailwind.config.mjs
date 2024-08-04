@@ -10,6 +10,7 @@ export default {
         "accent-two": "#e06f7e",
         "background-lighten": "#aba2c5",
         "foreground-darken": "#946e03",
+        "background-darken": "#2f2941",
       },
     },
   },

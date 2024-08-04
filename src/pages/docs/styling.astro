@@ -1,0 +1,61 @@
+---
+import Layout from "../../layouts/DocsLayout.astro";
+
+import Docbar from "../../components/Docbar.astro";
+---
+
+<Layout title="Styling Policygen - Online Policy Generator">
+  <div class="flex flex-row">
+    <Docbar />
+
+    <div class="p-6 w-full rounded-lg mx-auto bg-background-darken">
+      <h1 class="text-white text-3xl font-bold">Styling your policies</h1>
+
+      <h2 class="text-white text-xl font-bold my-4">Custom CSS</h2>
+      <pre
+        class="bg-gray-700 p-2 rounded-lg text-white my-2 text-sm"><code class="language-css" is:raw>/* The outmost container class */
+.policygen-container {
+}
+/* The h1 header class */
+.policygen-h1 {
+}
+/* The h2 header class */
+.policygen-h2 {
+}
+/* The h3 header class */
+.policygen-h3 {
+}
+/* The section class, break/margin between each section of the policy */
+.policygen-section {
+}
+/* Body text, the paragraph text within each section */
+.policygen-body-text {
+}
+/* Unordered lists */
+.policygen-ul {
+}
+/* Ordered list */
+.policygen-ol {
+}
+/* Bold paragraph class */
+.policygen-bold {
+}
+/* Link class, remember to have a hover on this class */
+.policygen-link {
+}</code></pre>
+      <h2 class="text-white text-xl font-bold my-4">Tailwindcss</h2>
+      <p class="text-white">
+        If you're using Tailwindcss as your css framework you can set the
+        classes used for certain components
+      </p>
+      <pre
+        class="bg-gray-700 p-2 rounded-lg text-white my-2 text-sm"><code class="language-javascript" is:raw>config.tailwind_config = {
+  heading_color: "text-gray-900",
+  body_color: "text-gray-800",
+  link_color: "text-blue-500 hover:text-blue-700"
+}</code></pre>
+    </div>
+
+    <div class="w-96"></div>
+  </div></Layout
+>

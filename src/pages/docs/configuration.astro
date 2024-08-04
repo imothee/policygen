@@ -1,0 +1,43 @@
+---
+import Layout from "../../layouts/DocsLayout.astro";
+
+import Docbar from "../../components/Docbar.astro";
+import ConfigSection from "../../components/ConfigSection.astro";
+
+import Config from "../../policygen-config.json";
+---
+
+<Layout title="Policygen Config - Online Policy Generator">
+  <div class="flex flex-row">
+    <Docbar />
+
+    <div class="p-6 rounded-lg mx-auto bg-background-darken">
+      <h1 class="text-white text-4xl font-bold">Configuration Reference</h1>
+      <p class="text-gray-400 mt-4">
+        This page documents all of the configuration options available in
+        Policygen libraries.
+      </p>
+
+      {Config.options.map((section) => <ConfigSection section={section} />)}
+    </div>
+
+    <div class="w-96">
+      <h2 class="text-white text-2xl font-bold ml-4 mb-4">Table of Contents</h2>
+      <ul class="text-gray-400 pl-4 text-sm space-y-1">
+        {Config.options.map((section) => (
+          <li>
+            <a class="hover:text-gray-500 hover:underline" href={`#section-${section.section}`}>{section.section}</a>
+          </li>
+          <li>
+            {section.options.map((option) => (
+              <ul class="ml-4 space-y-1">
+                <li>
+                  <a class="hover:text-gray-500 hover:underline" href={`#option-${option.name}`}>{option.name}</a>
+                </li>
+              </ul>
+            ))}
+          </li>
+        ))}
+    </div>
+  </div></Layout
+>

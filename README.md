@@ -6,7 +6,7 @@ Policygen helps you setup and publish Privacy Policies and Terms of Service poli
 
 Build your policies online today with no dependencies necessary.
 
-[policygen.xyz/generator](policygen.xyz/generator)
+[policygen.xyz/generator](https://policygen.xyz/generator)
 
 ## Libraries
 

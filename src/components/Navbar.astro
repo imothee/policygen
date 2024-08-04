@@ -21,16 +21,30 @@ const pathname = new URL(Astro.request.url).pathname;
         </li>
         <li>
           <Navlink
-            href="/policygen-rails"
+            href="/docs/policygen-rails"
             pathname={pathname}
             title="Policygen-rails"
           />
         </li>
         <li>
           <Navlink
-            href="/policygen-js"
+            href="/docs/policygen-js"
             pathname={pathname}
             title="Policygen-js"
+          />
+        </li>
+        <li>
+          <Navlink
+            href="/docs/styling"
+            pathname={pathname}
+            title="Policygen Styling"
+          />
+        </li>
+        <li>
+          <Navlink
+            href="/docs/configuration"
+            pathname={pathname}
+            title="Policygen Configuration"
           />
         </li>
       </ul>

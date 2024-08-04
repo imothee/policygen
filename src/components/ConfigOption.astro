@@ -1,0 +1,49 @@
+---
+const { option } = Astro.props;
+
+const formatDefault = (defaultValue) => {
+  if (defaultValue === undefined) {
+    return "None";
+  }
+
+  if (typeof defaultValue === "string") {
+    return `"${defaultValue}"`;
+  }
+
+  if (typeof defaultValue === "object") {
+    return JSON.stringify(defaultValue, null, 2);
+  }
+
+  if (typeof defaultValue === "boolean") {
+    return defaultValue ? "true" : "false";
+  }
+
+  return defaultValue;
+};
+---
+
+<div id={`option-${option.name}`} class="my-8 space-y-2">
+  <h3 class="text-white text-lg font-bold my-2">{option.name}</h3>
+  <p class="text-gray-400">
+    <strong>Type: </strong>{option.type}
+  </p>
+  <p class="text-gray-400">
+    <strong>Default: </strong>{formatDefault(option.default)}
+  </p>
+  <p class="text-gray-400">
+    {option.description}
+  </p>
+  {
+    option.context &&
+      option.context.map((context) => <p class="text-foreground">{context}</p>)
+  }
+  {
+    option.placeholder && (
+      <div class="bg-gray-700 p-4 rounded-lg text-white my-2 text-sm">
+        <code class="language-javascript">
+          {option.name}: {formatDefault(option.placeholder)}
+        </code>
+      </div>
+    )
+  }
+</div>

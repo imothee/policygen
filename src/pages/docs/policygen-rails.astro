@@ -1,0 +1,77 @@
+---
+import Layout from "../../layouts/DocsLayout.astro";
+
+import Docbar from "../../components/Docbar.astro";
+---
+
+<Layout title="Policygen Rails - Online Policy Generator">
+  <div class="flex flex-row">
+    <Docbar />
+
+    <div class="p-6 w-full rounded-lg mx-auto bg-background-darken">
+      <h1 class="text-white text-3xl font-bold">Getting Started</h1>
+
+      <h2 class="text-white text-xl font-bold my-4">Installation</h2>
+      <p class="text-white">Add this line to your application's Gemfile:</p>
+      <pre
+        class="bg-gray-700 p-2 rounded-lg text-white my-2 text-sm"><code class="language-ruby">gem 'policygen'</code></pre>
+      <p class="text-white">And then execute:</p>
+      <pre
+        class="bg-gray-700 p-2 rounded-lg text-white my-2 text-sm"><code class="language-bash">bundle install</code></pre>
+      <p class="text-white">Or install it yourself as:</p>
+      <pre
+        class="bg-gray-700 p-2 rounded-lg text-white my-2 text-sm"><code class="language-bash">gem install policygen</code></pre>
+      <h3 class="text-white text-lg font-bold my-4">Run the installer</h3>
+      <p class="text-white">
+        To setup the policygen config file in your rails project run:
+      </p>
+      <pre
+        class="bg-gray-700 p-2 rounded-lg text-white my-2 text-sm"><code class="language-bash">rails generate policygen:install</code></pre>
+      <h3 class="text-white text-lg font-bold my-4">
+        If using Tailwind as your css framework
+      </h3>
+      <p class="text-white">
+        Add the following to app/config/tailwind.config.js:
+      </p>
+      <pre
+        class="bg-gray-700 p-2 rounded-lg text-white my-2 text-sm"><code class="language-javascript" is:raw>module.exports = {
+  content: [
+    './public/*.html',
+    ...,
+    getPolicygenViewPath()
+  ]
+}
+
+function getPolicygenViewPath() {
+  const { execSync } = require("child_process");
+  const path = execSync("bundle show policygen").toString().trim();
+  return `${path}/**/*.{erb,html,rb}`;
+}</code></pre>
+      <h2 class="text-white text-xl font-bold my-4">Usage</h2>
+      <p class="text-white">
+        Policygen mounts two view helpers to render your policies into any view
+        you want to setup. The contents are driven by the config defined in
+        policygen.rb
+      </p>
+      <p class="text-white">
+        Once you've answered all the config questions you're ready to render
+        your privacy and terms page.
+      </p>
+      <p class="text-white">
+        To render the privacy policy in your view use the following helper:
+      </p>
+      <pre
+        class="bg-gray-700 p-2 rounded-lg text-white my-2 text-sm"><code class="language-ruby">&lt;div class="whatever-your-container-is"&gt;
+  &lt;%= privacy_policy %&gt;
+&lt;/div&gt;</code></pre>
+      <p class="text-white">
+        To render the terms of service in your view use the following helper:
+      </p>
+      <pre
+        class="bg-gray-700 p-2 rounded-lg text-white my-2 text-sm"><code class="language-ruby">&lt;div class="whatever-your-container-is"&gt;
+  &lt;%= terms_of_service %&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+    <div class="w-96"></div>
+  </div></Layout
+>

@@ -1,0 +1,69 @@
+---
+import Layout from "../../layouts/DocsLayout.astro";
+
+import Docbar from "../../components/Docbar.astro";
+---
+
+<Layout title="Policygen JS - Online Policy Generator">
+  <div class="flex flex-row">
+    <Docbar />
+
+    <div class="p-6 w-full rounded-lg mx-auto bg-background-darken">
+      <h1 class="text-white text-3xl font-bold">Getting Started</h1>
+
+      <h2 class="text-white text-xl font-bold my-4">Installation</h2>
+      <pre
+        class="bg-gray-700 p-2 rounded-lg text-white my-2 text-sm"><code class="language-bash">npm install 'policygen'</code></pre>
+      <h3 class="text-white text-lg font-bold my-4">
+        If using Tailwind as your css framework
+      </h3>
+      <p class="text-white">Add the following to tailwind.config.js:</p>
+      <pre
+        class="bg-gray-700 p-2 rounded-lg text-white my-2 text-sm"><code class="language-javascript" is:raw>module.exports = {
+  content: [
+    './public/*.html',
+    ...,
+    getPolicygenViewPath()
+  ]
+}
+
+function getPolicygenViewPath() {
+  return `./node_modules/policygen/**/*.{ts}`;
+}</code></pre>
+      <h2 class="text-white text-xl font-bold my-4">Usage</h2>
+      <p class="text-white">
+        Because of issues making raw file templates available to both the
+        browser and node libraries, the templates which are loaded in as js
+        files with the string contents to avoid having to do filesystem lookups
+        for the templates. We are using ejs to render on the server as it is
+        stable and well documented but the ejs browser library caused nothing
+        but pain so for the client/browser library we're using lodash templates
+        instead.
+      </p>
+      <p class="text-white mt-4">Create your config</p>
+      <pre
+        class="bg-gray-700 p-2 rounded-lg text-white my-2 text-sm"><code class="language-javascript" is:raw>const config = {
+  ...
+}</code></pre>
+
+      <h3 class="text-white text-lg">Client Library (Browser)</h3>
+      <pre
+        class="bg-gray-700 p-2 rounded-lg text-white my-2 text-sm"><code class="language-javascript">import Policygen from "policygen/client";</code></pre>
+      <h3 class="text-white text-lg">Node Library (Browser)</h3>
+      <pre
+        class="bg-gray-700 p-2 rounded-lg text-white my-2 text-sm"><code class="language-javascript">import Policygen from "policygen";</code></pre>
+      <h3 class="text-white text-lg">Render</h3>
+      <pre
+        class="bg-gray-700 p-2 rounded-lg text-white my-2 text-sm"><code class="language-javascript" is:raw>async function generatePrivacyPolicy() {
+  const policygen = new Policygen({ config });
+  policy = await policygen.privacyPolicy();
+}
+
+async function generateTermsOfService() {
+  const policygen = new Policygen({ config });
+  policy = await policygen.termsOfService();
+}</code></pre>
+    </div>
+    <div class="w-96"></div>
+  </div>
+</Layout>

@@ -1,0 +1,495 @@
+{
+  "options": [
+    {
+      "section": "CSS and Styling",
+      "options": [
+        {
+          "name": "css_framework",
+          "description": "Which css framework to use?",
+          "type": "string",
+          "default": "tailwind",
+          "options": ["tailwind", "custom"]
+        },
+        {
+          "name": "tailwind_config",
+          "description": "Tailwind css configuration",
+          "type": "object",
+          "default": {
+            "heading_color": "text-gray-800",
+            "body_color": "text-gray-700",
+            "link_color": "text-blue-500"
+          }
+        }
+      ]
+    },
+    {
+      "section": "Entity Information",
+      "options": [
+        {
+          "name": "entity_name",
+          "description": "What is the entity name we should use in the policies?",
+          "type": "string",
+          "placeholder": "Your entity name"
+        },
+        {
+          "name": "entity_website",
+          "description": "What is the entity website we should use in the policies?",
+          "type": "string",
+          "placeholder": "https://www.your-entity-website.com"
+        },
+        {
+          "name": "entity_address",
+          "description": "Do you have a contact address for privacy questions?",
+          "type": "string",
+          "placeholder": "1234 Main Street, Anytown, USA"
+        },
+        {
+          "name": "support_email",
+          "description": "Do you have a support email for privacy questions?",
+          "type": "string",
+          "placeholder": "support@policygen.xyz"
+        },
+        {
+          "name": "privacy_email",
+          "description": "Do you have a privacy email for privacy questions?",
+          "type": "string",
+          "placeholder": "privacy@policygen.xyz"
+        }
+      ]
+    },
+    {
+      "section": "Policy updates",
+      "options": [
+        {
+          "name": "privacy_last_updated",
+          "description": "When was your privacy policy last updated?",
+          "type": "string",
+          "placeholder": "May 31, 2024"
+        },
+        {
+          "name": "tos_last_updated",
+          "description": "When was your terms of service last updated?",
+          "type": "string",
+          "placeholder": "May 31, 2024"
+        }
+      ]
+    },
+    {
+      "section": "Policy wide settings",
+      "options": [
+        {
+          "name": "platforms",
+          "description": "Which platforms does your policy apply to?",
+          "type": "array",
+          "default": ["web"],
+          "options": ["web", "mobile"]
+        },
+        {
+          "name": "locations",
+          "description": "Which locations does your policy apply to?",
+          "type": "array",
+          "default": ["us", "eu", "uk"],
+          "options": ["us", "eu", "uk"]
+        },
+        {
+          "name": "entity_location",
+          "description": "Where is your entity located?",
+          "type": "string",
+          "default": "us"
+        },
+        {
+          "name": "under_eighteen",
+          "description": "Do you allow users under 18?",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "under_thirteen",
+          "description": "Do you allow users under 13?",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "social_sign_in",
+          "description": "Do you use social sign in?",
+          "type": "boolean",
+          "default": false
+        }
+      ]
+    },
+    {
+      "section": "Terms of Service Specific Settings",
+      "options": [
+        {
+          "name": "purchasable_goods",
+          "description": "Do you sell purchasable goods?",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "subscription",
+          "description": "Do you have a subscription?",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "free_trial",
+          "description": "Does your subscription have a free trial?",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "auto_renew",
+          "description": "Does your subscription renew automatically?",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "refund_policy",
+          "description": "What is the refund policy?",
+          "type": "string",
+          "default": "none",
+          "options": ["none", "full", "pro_rata"]
+        },
+        {
+          "name": "user_content",
+          "description": "Do you allow users to upload content?",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "user_content_license",
+          "description": "Do you assign a license of user uploaded content?",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "user_accounts",
+          "description": "Do you allow users to create accounts?",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "governing_law",
+          "description": "Governing law clause.",
+          "type": "string",
+          "default": "california",
+          "placeholder": "new_york"
+        },
+        {
+          "name": "dispute_resolution",
+          "description": "Dispute resolution clause.",
+          "type": "string",
+          "default": "litigation",
+          "options": ["litigation", "arbitration"]
+        },
+        {
+          "name": "mediation",
+          "description": "Do you want to do informal mediation before arbitration or litigation?",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "prohibited_uses",
+          "description": "Prohibited uses clause. Add any custom prohibited uses to this array.",
+          "type": "array",
+          "default": [],
+          "placeholder": [
+            "crawling",
+            "illegal",
+            "harmful",
+            "infringing",
+            "abusive",
+            "spam",
+            "advertising",
+            "impersonation",
+            "account_transfer"
+          ]
+        },
+        {
+          "name": "service_sla",
+          "description": "Service has an SLA",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "service_sla_amount",
+          "description": "Service SLA Amount (out of 100% availability)",
+          "type": "number",
+          "default": 0,
+          "placeholder": 99.9
+        },
+        {
+          "name": "service_sla_timeframe",
+          "description": "Service SLA timeframe.",
+          "type": "string",
+          "default": null,
+          "placeholder": "1 month"
+        },
+        {
+          "name": "service_sla_refund",
+          "description": "Do you offer a refund if you breach the SLA?",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "service_sla_custom",
+          "description": "Service SLA custom clause.",
+          "context": [
+            "If this exists we will use this instead of the amount and timeframe above."
+          ],
+          "type": "string",
+          "default": null,
+          "placeholder": "We guarantee 99.9% uptime"
+        },
+        {
+          "name": "liability_limitation",
+          "description": "Liability limitation.",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "liability_limitation_type",
+          "description": "Liability limitation.",
+          "type": "string",
+          "default": "amount_paid",
+          "options": ["amount_paid", "amount", "min_amount_paid_or_amount"]
+        },
+        {
+          "name": "liability_limitation_timeframe",
+          "description": "Liability timeframe, set if you have a subscription model.",
+          "type": "string",
+          "default": null,
+          "placeholder": "6 months"
+        },
+        {
+          "name": "liability_limitation_amount",
+          "description": "Liability limitation amount.",
+          "type": "number",
+          "default": 0,
+          "placeholder": 1000
+        }
+      ]
+    },
+    {
+      "section": "Privacy Specific Settings",
+      "options": [
+        {
+          "name": "personal_information",
+          "description": "What personal information do you collect?",
+          "context": [
+            "Personal information is any data that can be used to identify an individual.",
+            "Add any custom data you collect to this array."
+          ],
+          "type": "array",
+          "default": [],
+          "placeholder": [
+            "name",
+            "email",
+            "phone",
+            "address",
+            "password",
+            "ip_address",
+            "device_id",
+            "credit_card",
+            "location_data",
+            "anonymized_usage_data"
+          ]
+        },
+        {
+          "name": "sensitive_information",
+          "description": "What sensitive information do you collect?",
+          "context": [
+            "Sensitive information is any data that a user would have a reasonable expectation to remain private.",
+            "Add any custom data you collect to this array."
+          ],
+          "type": "array",
+          "default": [],
+          "placeholder": [
+            "ssn",
+            "financial_data",
+            "health_data",
+            "biometric_data",
+            "genetic_data",
+            "political_affiliation",
+            "sexual_orientation",
+            "criminal_history",
+            "religion"
+          ]
+        },
+        {
+          "name": "third_party_data",
+          "description": "What third-party data do you collect?",
+          "context": [
+            "Third-party data is any data that you collect from third-party services.",
+            "Add any custom data you collect to this array."
+          ],
+          "type": "array",
+          "default": [],
+          "placeholder": [
+            "advertising_data",
+            "analytics_data",
+            "social_media_data",
+            "purchase_data",
+            "email_data",
+            "support_data",
+            "job_data",
+            "address_data",
+            "behavior_data"
+          ]
+        },
+        {
+          "name": "payment_data",
+          "description": "Do you collect payment data?",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "payment_processors",
+          "description": "What payment processors do you use?",
+          "context": [
+            "Please add the website of any payment processers you use."
+          ],
+          "type": "array",
+          "default": [],
+          "placeholder": ["https://stripe.com", "https://paypal.com"]
+        },
+        {
+          "name": "app_usage_data",
+          "description": "Do you store logs or app usage data?",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "third_party_disclosure",
+          "description": "Do you disclose personal information to third parties?",
+          "context": [
+            "If you use third-party services that collect data, set this to true."
+          ],
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "third_party_disclosure_entities",
+          "description": "Third party entities you disclose personal information to.",
+          "type": "array",
+          "default": [],
+          "placeholder": ["Google Analytics", "Facebook Pixel"]
+        },
+        {
+          "name": "third_party_sharing",
+          "description": "Do you sell/share personal information with third parties?",
+          "context": [
+            "If you sell or share any data with business partners, set this to true."
+          ],
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "third_party_sharing_entities",
+          "description": "Third party entities you share personal information with.",
+          "type": "array",
+          "default": [],
+          "placeholder": ["Google Ads", "Facebook Ads"]
+        },
+        {
+          "name": "security_measures",
+          "description": "Do you have robust security measures in place?",
+          "context": [
+            "If you have security measures in place to protect user data, set this to true."
+          ],
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "web_tracking",
+          "description": "Do you use tracking cookies/web beacons?",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "third_party_analytics",
+          "description": "Do you use third party analytics?",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "service_requirements",
+          "description": "What do you need to perform to deliver your service?",
+          "context": [
+            "Accounts = Creating and managing user accounts",
+            "Communications = Sending transactional or marketing communications to or between users",
+            "Orders = Processing orders and payments",
+            "Custom: add your use cases here"
+          ],
+          "type": "array",
+          "default": [],
+          "placeholder": ["accounts", "communications", "orders"]
+        },
+        {
+          "name": "legal_basis",
+          "description": "Under what legal basis do you collect and process data?",
+          "type": "array",
+          "default": [],
+          "placeholder": [
+            "advertising",
+            "marketing",
+            "analytics",
+            "security",
+            "fraud_prevention"
+          ]
+        },
+        {
+          "name": "data_retention_period",
+          "description": "How long do you store user data after account termination?",
+          "type": "string",
+          "default": null,
+          "placeholder": "3 months"
+        },
+        {
+          "name": "us_state_privacy_laws",
+          "description": "Do you support all US state privacy laws?",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "privacy_page",
+          "description": "Do you have a privacy management page to link to?",
+          "context": [
+            "If you don't have a privacy page, users will be told to email you at your privacy_email with deletion and data requests."
+          ],
+          "type": "string",
+          "default": null,
+          "placeholder": "https://www.your-entity-website.com/privacy"
+        },
+        {
+          "name": "dpo",
+          "description": "Do you have a Data Protection Officer (DPO)?",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "dpo_name",
+          "description": "What is the DPO's name?",
+          "type": "string",
+          "default": null,
+          "placeholder": "Ed Po"
+        },
+        {
+          "name": "dpo_email",
+          "description": "What is the DPO's email?",
+          "type": "string",
+          "default": null,
+          "placeholder": ""
+        },
+        {
+          "name": "dpo_phone",
+          "description": "What is the DPO's phone number?",
+          "type": "string",
+          "default": null,
+          "placeholder": ""
+        }
+      ]
+    }
+  ]
+}
