@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.7.0",
+    "@astrojs/sitemap": "^3.1.6",
     "@astrojs/svelte": "^5.7.0",
     "@astrojs/tailwind": "^5.1.0",
     "astro": "^4.10.3",
+    "astro-robots-txt": "^1.0.0",
     "lodash": "^4.17.21",
     "policygen": "^0.1.5",
     "svelte": "^4.2.18",
