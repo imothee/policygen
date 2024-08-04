@@ -6,5 +6,5 @@ import ConfigOption from "./ConfigOption.astro";
 
 <div id={`section-${section.section}`} class="my-4">
   <h2 class="text-white text-2xl font-bold my-8">{section.section}</h2>
-  {section.options.map((option) => <ConfigOption option={option} />)}
+  {section.options.map((option: object) => <ConfigOption option={option} />)}
 </div>

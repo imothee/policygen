@@ -1,7 +1,7 @@
 ---
 const { option } = Astro.props;
 
-const formatDefault = (defaultValue) => {
+const formatDefault = (defaultValue: any) => {
   if (defaultValue === undefined) {
     return "None";
   }
@@ -35,7 +35,9 @@ const formatDefault = (defaultValue) => {
   </p>
   {
     option.context &&
-      option.context.map((context) => <p class="text-foreground">{context}</p>)
+      option.context.map((context: string) => (
+        <p class="text-foreground">{context}</p>
+      ))
   }
   {
     option.placeholder && (
