@@ -64,6 +64,11 @@
         <div class="col-span-full text-foreground text-center">
           Your Policy Details
         </div>
+        <p class="col-span-full text-foreground text-center">
+          Generating a policy comes with no warranty or guarantee for
+          correctness or compliance. Always consult a legal professional for
+          advice.
+        </p>
         <div class="col-span-3">
           <button
             on:click={generatePrivacyPolicy}
