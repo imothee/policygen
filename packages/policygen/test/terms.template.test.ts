@@ -168,6 +168,23 @@ describe("terms.html.ejs template", () => {
     expect(rendered).toContain("section-subscriptions");
   });
 
+  test("renders a readable account-transfer prohibition", async () => {
+    const rendered = await ejs.render(template, {
+      css: getCssStyles("tailwind"),
+      t,
+      config: {
+        ...baseConfig,
+        terms: { ...baseConfig.terms, prohibitedUses: ["accountTransfer"] },
+      },
+      updated: "January 1, 2025",
+    });
+
+    expect(rendered).toContain(
+      "You must not transfer your account to another party without our consent.",
+    );
+    expect(rendered).not.toContain(">accountTransfer<");
+  });
+
   test("HTML tags are properly closed", async () => {
     const css = getCssStyles("tailwind");
     const rendered = await ejs.render(template, {

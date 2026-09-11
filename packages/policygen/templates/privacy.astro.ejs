@@ -2,10 +2,16 @@
 <% if (config.output.astroLayout) { %>
 import Layout from "<%- config.output.astroLayout.path %>";
 <% } %>
+<% if (config.output.astroLayout && config.output.astroShell) { %>
+import Shell from "<%- config.output.astroShell.path %>";
+<% } %>
 ---
 
 <% if (config.output.astroLayout) { %>
 <Layout<% if (config.output.astroLayout.props) { %> <%- Object.entries(config.output.astroLayout.props).map(([k, v]) => `${k}=${typeof v === 'string' ? `"${v}"` : `{${JSON.stringify(v)}}`}`).join(' ') %><% } %>>
+<% if (config.output.astroShell) { %>
+<Shell<% if (config.output.astroShell.props) { %> <%- Object.entries(config.output.astroShell.props).map(([k, v]) => `${k}=${typeof v === 'string' ? `"${v}"` : `{${JSON.stringify(v)}}`}`).join(' ') %><% } %>>
+<% } %>
 <% } else { %>
 <!doctype html>
 <html lang="en">
@@ -124,6 +130,9 @@ import Layout from "<%- config.output.astroLayout.path %>";
       <% } %>
       <% if (config.privacy.browserExtension) { %>
         <li><a href="#section-browser-extension" class="<%= css.link %>"><%= t('privacy_policy.sections.browser_extension') %></a></li>
+      <% } %>
+      <% if (config.privacy.aiUsage) { %>
+        <li><a href="#section-ai-usage" class="<%= css.link %>"><%= t('privacy_policy.sections.ai_usage') %></a></li>
       <% } %>
       <li><a href="#section-data-retention" class="<%= css.link %>"><%= t('privacy_policy.sections.data_retention') %></a></li>
       <% if (config.privacy.dataBreachNotification) { %>
@@ -453,6 +462,54 @@ import Layout from "<%- config.output.astroLayout.path %>";
     </section>
   <% } %>
 
+  <!-- AI Usage -->
+  <% if (config.privacy.aiUsage) { %>
+    <section id="section-ai-usage" class="<%= css.section %>">
+      <h2 class="<%= css.subheading %>"><%= t('privacy_policy.sections.ai_usage') %></h2>
+      <p class="<%= css.paragraph %>">
+        <%= t('privacy_policy.ai_usage.intro') %>
+      </p>
+
+      <% if (config.privacy.aiUsage.providers && config.privacy.aiUsage.providers.length > 0) { %>
+        <h3 class="<%= css.tertiary %>"><%= t('privacy_policy.ai_usage.providers_heading') %></h3>
+        <ul class="<%= css.list %>">
+          <% config.privacy.aiUsage.providers.forEach(function(provider) { %>
+            <li>
+              <a href="<%= t(`privacy_policy.ai_usage.providers.${provider}.url`) %>" class="<%= css.link %>" target="_blank" rel="noopener">
+                <%= t(`privacy_policy.ai_usage.providers.${provider}.name`, provider) %>
+              </a>
+              &mdash; <%= t(`privacy_policy.ai_usage.providers.${provider}.description`, provider) %>
+            </li>
+          <% }); %>
+        </ul>
+      <% } %>
+
+      <% if (config.privacy.aiUsage.usedFor && config.privacy.aiUsage.usedFor.length > 0) { %>
+        <h3 class="<%= css.tertiary %>"><%= t('privacy_policy.ai_usage.used_for_heading') %></h3>
+        <p class="<%= css.paragraph %>">
+          <%= t('privacy_policy.ai_usage.used_for_intro') %>
+        </p>
+        <ul class="<%= css.list %>">
+          <% config.privacy.aiUsage.usedFor.forEach(function(use) { %>
+            <li><%= use %></li>
+          <% }); %>
+        </ul>
+      <% } %>
+
+      <h3 class="<%= css.tertiary %>"><%= t('privacy_policy.ai_usage.data_handling_heading') %></h3>
+      <p class="<%= css.paragraph %>"><%= config.privacy.aiUsage.dataHandling %></p>
+
+      <% if (config.privacy.aiUsage.automatedDecisions) { %>
+        <h3 class="<%= css.tertiary %>"><%= t('privacy_policy.ai_usage.automated_decisions_heading') %></h3>
+        <p class="<%= css.paragraph %>"><%= config.privacy.aiUsage.automatedDecisions %></p>
+      <% } %>
+
+      <p class="<%= css.paragraph %>">
+        <%- t('privacy_policy.ai_usage.contact', { privacy_email: config.privacy.privacyEmail, link_class: css.link }) %>
+      </p>
+    </section>
+  <% } %>
+
   <!-- Data Retention -->
   <section id="section-data-retention" class="<%= css.section %>">
     <h2 class="<%= css.subheading %>"><%= t('privacy_policy.sections.data_retention') %></h2>
@@ -656,6 +713,9 @@ import Layout from "<%- config.output.astroLayout.path %>";
 </div>
 
 <% if (config.output.astroLayout) { %>
+<% if (config.output.astroShell) { %>
+</Shell>
+<% } %>
 </Layout>
 <% } else { %>
 </body>

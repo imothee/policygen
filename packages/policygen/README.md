@@ -2,7 +2,7 @@
 
 Generate privacy and terms of service policies for your website or app. Define your policy config once in JSON, then generate well-structured HTML or Astro pages automatically.
 
-[Documentation](https://policygen.xyz) | [GitHub](https://github.com/imothee-io/policygen)
+[Documentation](https://policygen.xyz) | [GitHub](https://github.com/cosmicglue-io/policygen)
 
 ---
 
@@ -30,11 +30,11 @@ npx policygen init
 
 The `init` wizard walks you through policy-related questions. Pass `--default` to emit a blank config file instead.
 
-The config file uses a [JSON schema](https://policygen.xyz/schemas/0.6/schema.json) for editor autocompletion:
+The config file uses a [JSON schema](https://policygen.xyz/schemas/0.7/schema.json) for editor autocompletion:
 
 ```json
 {
-  "$schema": "https://policygen.xyz/schemas/0.6/schema.json",
+  "$schema": "https://policygen.xyz/schemas/0.7/schema.json",
   "output": {
     "fileType": "html",
     "cssFramework": "classes",
@@ -69,6 +69,7 @@ npx policygen generate:terms
 
 - **HTML** — standalone HTML pages with configurable CSS framework support (plain classes, Tailwind, DaisyUI)
 - **Astro** — `.astro` component files with optional layout wrapping and prop passing
+- **Astro shells** — optional nested shell components for shared navigation and footer chrome
 
 ### Privacy Policy
 
@@ -76,6 +77,7 @@ Covers a wide range of compliance requirements:
 
 - **Platform support** — web, mobile, desktop, and browser extensions
 - **Browser extension disclosures** — permissions, host permissions, data collected, local vs. remote processing
+- **AI disclosures** — providers, product uses, operator-supplied data handling, and automated decisions
 - **Regulatory compliance** — GDPR, CCPA/CPRA, VCDPA, COPPA
 - **Cookie consent** — consent mechanisms with named provider support
 - **Cross-border transfers** — SCCs, BCRs, adequacy decisions
@@ -101,7 +103,7 @@ For full configuration reference and advanced usage, visit [policygen.xyz](https
 
 ## Sponsors
 
-PolicyGen is sponsored by [imothee.io](https://imothee.io).
+PolicyGen is published and maintained by [CosmicGlue](https://cosmicglue.io).
 
 ## License
 

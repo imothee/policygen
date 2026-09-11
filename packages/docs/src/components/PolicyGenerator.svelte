@@ -109,7 +109,7 @@
 
   function buildConfig() {
     const config = {
-      $schema: "https://policygen.xyz/schemas/0.6/schema.json",
+      $schema: "https://policygen.xyz/schemas/0.7/schema.json",
       output: {
         fileType,
         cssFramework,

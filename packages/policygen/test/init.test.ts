@@ -1,4 +1,4 @@
-import { execSync } from "node:child_process";
+import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { afterEach, beforeEach, expect, test } from "vitest";
@@ -20,11 +20,9 @@ afterEach(() => {
 test("should create a default policygen.json file with --default flag", () => {
   // Run the CLI command
   const cliPath = path.resolve(__dirname, "../dist/index.js");
-  const out = execSync(`${cliPath} init --default`, {
+  execFileSync(process.execPath, [cliPath, "init", "--default"], {
     cwd: testDir,
   });
-  console.log(testDir);
-  console.log(out.toString());
 
   // Verify the output file
   const configPath = path.resolve(testDir, "policygen.json");

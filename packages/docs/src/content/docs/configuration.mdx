@@ -6,7 +6,7 @@ The configuration file has four main sections:
 
 ```json
 {
-  "$schema": "https://policygen.xyz/schemas/0.6/schema.json",
+  "$schema": "https://policygen.xyz/schemas/0.7/schema.json",
   "output": { /* Output configuration */ },
   "entity": { /* Your organization details */ },
   "privacy": { /* Privacy policy options */ },
@@ -25,6 +25,8 @@ Controls how and where policies are generated.
 | `fileType` | `"html"` \| `"astro"` | `"html"` | Output format |
 | `cssFramework` | `"tailwind"` \| `"daisyui"` \| `"classes"` | `"classes"` | CSS class style |
 | `locales` | `string[]` | `["en"]` | Languages to generate |
+| `astroLayout` | `object` | - | Layout component path and optional props for Astro output |
+| `astroShell` | `object` | - | Shell component rendered inside `astroLayout`, with optional props |
 
 ### Example
 
@@ -135,6 +137,19 @@ For browser extension privacy policies.
 | `browserExtension.dataSentTo` | `string` | Where data is sent |
 | `browserExtension.runsLocally` | `boolean` | Processes data locally |
 | `browserExtension.storeListingUrl` | `string` | Store listing URL |
+
+### AI Usage (v0.7+)
+
+Set `privacy.aiUsage` when a service uses AI systems. Policygen names the
+configured providers and renders the factual disclosures you supply; it does
+not infer provider retention, training, residency, or compliance terms.
+
+| Option | Type | Description |
+|--------|------|-------------|
+| `aiUsage.providers` | `string[]` | Providers involved in AI processing |
+| `aiUsage.usedFor` | `string[]` | Product purposes for AI processing |
+| `aiUsage.dataHandling` | `string` | Your factual statement about data sent, retained, or used for training |
+| `aiUsage.automatedDecisions` | `string` | Optional description of consequential automated decisions and review controls |
 
 ### New in v0.6
 
@@ -258,6 +273,13 @@ All options for customizing your terms of service.
 |--------|------|---------|-------------|
 | `taxLiability` | `boolean` | `false` | Include tax disclaimer. Clarifies users are responsible for applicable taxes |
 | `taxJurisdiction` | `string` | - | Primary tax jurisdiction |
+
+## Migration Guide: v0.6 to v0.7
+
+Existing v0.6 configurations remain valid. Update the schema URL to
+`https://policygen.xyz/schemas/0.7/schema.json` to use `astroShell` or
+`privacy.aiUsage`. AI data-handling and automated-decision text must describe
+your service's actual behavior.
 
 ## Migration Guide: v0.5 to v0.6
 

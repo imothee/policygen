@@ -41,7 +41,7 @@ export function loadConfig(): PolicygenConfig {
   }
 
   // Use the schema from the dist folder
-  const schemaPath = path.resolve(__dirname, "../config_schema.json");
+  const schemaPath = path.resolve(__dirname, "../../dist/config_schema.json");
   if (!fs.existsSync(schemaPath)) {
     throw new Error(`Schema file not found at ${schemaPath}`);
   }
@@ -53,9 +53,36 @@ export function loadConfig(): PolicygenConfig {
     throw new Error(`Invalid config: ${JSON.stringify(validate.errors)}`);
   }
 
-  // Merge the validated config with the default config and return it
-  return {
-    ...defaultConfig,
-    ...parsed, // Spread works because parsed is typed as Partial<PolicygenConfig>
-  };
+  // Merge the validated config with the default config and return it.
+  // Deep-merge nested groups (output / entity / privacy / terms) so optional
+  // fields fall through to defaults instead of being dropped by a shallow
+  // spread when the user supplies any other field in the same group.
+  return mergeConfig(defaultConfig, parsed) as PolicygenConfig;
+}
+
+function mergeConfig(
+  defaults: Record<string, unknown>,
+  user: Record<string, unknown>,
+): Record<string, unknown> {
+  const merged: Record<string, unknown> = { ...defaults };
+  for (const key of Object.keys(user)) {
+    const userVal = user[key];
+    const defaultVal = defaults[key];
+    if (
+      userVal !== null &&
+      typeof userVal === "object" &&
+      !Array.isArray(userVal) &&
+      defaultVal !== null &&
+      typeof defaultVal === "object" &&
+      !Array.isArray(defaultVal)
+    ) {
+      merged[key] = mergeConfig(
+        defaultVal as Record<string, unknown>,
+        userVal as Record<string, unknown>,
+      );
+    } else {
+      merged[key] = userVal;
+    }
+  }
+  return merged;
 }

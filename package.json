@@ -3,7 +3,7 @@
 	"description": "A privacy and terms of service policy generator for your website or app",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/imothee-io/policygen.git"
+		"url": "git+https://github.com/cosmicglue-io/policygen.git"
 	},
 	"keywords": [
 		"privacy",
@@ -12,9 +12,9 @@
 	"author": "imothee.xyz",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/imothee-io/policygen/issues"
+		"url": "https://github.com/cosmicglue-io/policygen/issues"
 	},
-	"homepage": "https://github.com/imothee-io/policygen#readme",
+	"homepage": "https://github.com/cosmicglue-io/policygen#readme",
 	"packageManager": "pnpm@10.28.2",
 	"scripts": {
 		"build:docs": "pnpm --filter docs build",

@@ -78,6 +78,7 @@ export default {
         cpra: "California Privacy Rights Act (CPRA)",
         vcdpa: "Virginia Consumer Data Protection Act (VCDPA)",
         coppa: "Children's Privacy (COPPA)",
+        ai_usage: "AI Usage",
         privacy_rights: "Your privacy rights",
         policy_changes: "Changes to our privacy policy",
         contact: "Contact us",
@@ -106,34 +107,34 @@ export default {
           phone: "Phone numbers",
           address: "Address",
           password: "Password",
-          ip_address: "IP Address",
-          device_id: "Device ID",
-          credit_card: "Credit Card",
-          location_data: "Location Data",
-          anonymized_usage_data: "Anonymized usage data",
+          ipAddress: "IP Address",
+          deviceId: "Device ID",
+          creditCard: "Credit Card",
+          locationData: "Location Data",
+          anonymizedUsageData: "Anonymized usage data",
           ssn: "Social security numbers",
-          financial_data: "Financial data",
-          health_data: "Health or Fitness data",
-          biometric_data: "Biometric data",
-          genetic_data: "Genetic data",
-          political_affiliation: "Political affiliation or voting data",
-          sexual_orientation: "Sexual orientation or preference data",
-          criminal_history: "Criminal or legal history",
+          financial: "Financial data",
+          health: "Health or Fitness data",
+          biometric: "Biometric data",
+          genetic: "Genetic data",
+          political: "Political affiliation or voting data",
+          sexualOrientation: "Sexual orientation or preference data",
+          criminalHistory: "Criminal or legal history",
           religion: "Religious or philosophical beliefs",
         },
         third_party: {
           heading: "Information from third parties",
           data: "We may collect information about you from third parties such as marketing partners, affiliates, and other sources we may use to update our records, identify new customers or prevent fraud. Examples of information we receive from other sources include",
-          advertising_data: "Advertising data",
-          analytics_data: "Analytics data",
-          social_media_data: "Social Media data",
-          purchase_data: "Purchase or commerce data",
-          email_data: "Email data",
-          support_data: "Support ticket data",
-          crm_data: "Sales data",
-          job_data: "Job or employment data",
-          address_data: "Mailing address data",
-          behavior_data: "Behavioral data",
+          advertising: "Advertising data",
+          analytics: "Analytics data",
+          socialMedia: "Social Media data",
+          purchase: "Purchase or commerce data",
+          email: "Email data",
+          support: "Support ticket data",
+          crm: "Sales data",
+          job: "Job or employment data",
+          address: "Mailing address data",
+          behavior: "Behavioral data",
         },
         derived: {
           heading: "Information derived from your use of our services",
@@ -151,7 +152,7 @@ export default {
         specifics: "Specific uses of information include",
         accounts:
           "To create, manage and support user accounts to provide access to our services.",
-        comunications:
+        communication:
           "To communicate with you about your account, our services, sales, marketing, events, updates, user to user communications or other information.",
         orders:
           "To process orders, transactions or payments and provide support and services.",
@@ -305,6 +306,66 @@ export default {
           localStorage: "Local storage - Data stored locally by websites",
           credentials:
             "Credentials - Login information you provide to the extension",
+        },
+      },
+      ai_usage: {
+        heading: "AI Usage",
+        intro:
+          "Some features in our service use AI systems for reasoning, summarization, content generation, or related tasks. This section describes the providers involved and how we use them.",
+        providers_heading: "AI providers we use",
+        used_for_heading: "How AI is used",
+        used_for_intro: "Our service invokes AI for the following purposes:",
+        data_handling_heading: "How AI providers handle data",
+        automated_decisions_heading: "Automated decisions",
+        contact:
+          'For questions about our AI usage, contact <a href="mailto:{{privacy_email}}" class="{{link_class}}">{{privacy_email}}</a>.',
+        providers: {
+          anthropic: {
+            name: "Anthropic API",
+            url: "https://www.anthropic.com",
+            description: "AI model provider.",
+          },
+          awsBedrock: {
+            name: "Amazon Bedrock",
+            url: "https://aws.amazon.com/bedrock/",
+            description: "Managed service for accessing foundation models.",
+          },
+          openai: {
+            name: "OpenAI API",
+            url: "https://openai.com",
+            description: "AI model provider.",
+          },
+          azureOpenAi: {
+            name: "Azure OpenAI Service",
+            url: "https://azure.microsoft.com/en-us/products/ai-services/openai-service",
+            description: "Managed service for accessing OpenAI models.",
+          },
+          googleAi: {
+            name: "Google AI / Gemini API",
+            url: "https://ai.google.dev",
+            description: "AI model provider.",
+          },
+          vertexAi: {
+            name: "Google Vertex AI",
+            url: "https://cloud.google.com/vertex-ai",
+            description: "Managed service for accessing foundation models.",
+          },
+          cohere: {
+            name: "Cohere API",
+            url: "https://cohere.com",
+            description: "AI model provider.",
+          },
+          mistral: {
+            name: "Mistral AI",
+            url: "https://mistral.ai",
+            description: "AI model provider.",
+          },
+          ollama: {
+            name: "Self-hosted (Ollama)",
+            url: "https://ollama.com",
+            description:
+              "Software for running models on operator-controlled infrastructure.",
+          },
         },
       },
       us_state_privacy_laws: {
@@ -496,7 +557,7 @@ export default {
           "You must not use the service to transmit any advertising or promotional materials.",
         impersonation:
           "You must not impersonate others or provide false information.",
-        account_transfer:
+        accountTransfer:
           "You must not transfer your account to another party without our consent.",
       },
       termination: {

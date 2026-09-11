@@ -106,6 +106,9 @@
       <% if (config.privacy.browserExtension) { %>
         <li><a href="#section-browser-extension" class="<%= css.link %>"><%= t('privacy_policy.sections.browser_extension') %></a></li>
       <% } %>
+      <% if (config.privacy.aiUsage) { %>
+        <li><a href="#section-ai-usage" class="<%= css.link %>"><%= t('privacy_policy.sections.ai_usage') %></a></li>
+      <% } %>
       <li><a href="#section-data-retention" class="<%= css.link %>"><%= t('privacy_policy.sections.data_retention') %></a></li>
       <% if (config.privacy.dataBreachNotification) { %>
         <li><a href="#section-data-breach" class="<%= css.link %>"><%= t('privacy_policy.sections.data_breach') %></a></li>
@@ -431,6 +434,54 @@
           <%- t('privacy_policy.browser_extension.store_listing', { url: config.privacy.browserExtension.storeListingUrl, link_class: css.link }) %>
         </p>
       <% } %>
+    </section>
+  <% } %>
+
+  <!-- AI Usage -->
+  <% if (config.privacy.aiUsage) { %>
+    <section id="section-ai-usage" class="<%= css.section %>">
+      <h2 class="<%= css.subheading %>"><%= t('privacy_policy.sections.ai_usage') %></h2>
+      <p class="<%= css.paragraph %>">
+        <%= t('privacy_policy.ai_usage.intro') %>
+      </p>
+
+      <% if (config.privacy.aiUsage.providers && config.privacy.aiUsage.providers.length > 0) { %>
+        <h3 class="<%= css.tertiary %>"><%= t('privacy_policy.ai_usage.providers_heading') %></h3>
+        <ul class="<%= css.list %>">
+          <% config.privacy.aiUsage.providers.forEach(function(provider) { %>
+            <li>
+              <a href="<%= t(`privacy_policy.ai_usage.providers.${provider}.url`) %>" class="<%= css.link %>" target="_blank" rel="noopener">
+                <%= t(`privacy_policy.ai_usage.providers.${provider}.name`, provider) %>
+              </a>
+              &mdash; <%= t(`privacy_policy.ai_usage.providers.${provider}.description`, provider) %>
+            </li>
+          <% }); %>
+        </ul>
+      <% } %>
+
+      <% if (config.privacy.aiUsage.usedFor && config.privacy.aiUsage.usedFor.length > 0) { %>
+        <h3 class="<%= css.tertiary %>"><%= t('privacy_policy.ai_usage.used_for_heading') %></h3>
+        <p class="<%= css.paragraph %>">
+          <%= t('privacy_policy.ai_usage.used_for_intro') %>
+        </p>
+        <ul class="<%= css.list %>">
+          <% config.privacy.aiUsage.usedFor.forEach(function(use) { %>
+            <li><%= use %></li>
+          <% }); %>
+        </ul>
+      <% } %>
+
+      <h3 class="<%= css.tertiary %>"><%= t('privacy_policy.ai_usage.data_handling_heading') %></h3>
+      <p class="<%= css.paragraph %>"><%= config.privacy.aiUsage.dataHandling %></p>
+
+      <% if (config.privacy.aiUsage.automatedDecisions) { %>
+        <h3 class="<%= css.tertiary %>"><%= t('privacy_policy.ai_usage.automated_decisions_heading') %></h3>
+        <p class="<%= css.paragraph %>"><%= config.privacy.aiUsage.automatedDecisions %></p>
+      <% } %>
+
+      <p class="<%= css.paragraph %>">
+        <%- t('privacy_policy.ai_usage.contact', { privacy_email: config.privacy.privacyEmail, link_class: css.link }) %>
+      </p>
     </section>
   <% } %>
 
