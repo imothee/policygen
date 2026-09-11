@@ -2,7 +2,7 @@
 <% if (config.output.astroLayout) { %>
 import Layout from "<%- config.output.astroLayout.path %>";
 <% } %>
-<% if (config.output.astroShell) { %>
+<% if (config.output.astroLayout && config.output.astroShell) { %>
 import Shell from "<%- config.output.astroShell.path %>";
 <% } %>
 ---
@@ -496,27 +496,13 @@ import Shell from "<%- config.output.astroShell.path %>";
         </ul>
       <% } %>
 
-      <p class="<%= css.paragraph %>">
-        <% if (config.privacy.aiUsage.noTraining) { %>
-          <%= t('privacy_policy.ai_usage.no_training') %>
-        <% } else { %>
-          <%= t('privacy_policy.ai_usage.training_disclosed') %>
-        <% } %>
-      </p>
+      <h3 class="<%= css.tertiary %>"><%= t('privacy_policy.ai_usage.data_handling_heading') %></h3>
+      <p class="<%= css.paragraph %>"><%= config.privacy.aiUsage.dataHandling %></p>
 
-      <% if (config.privacy.aiUsage.credentialsExcluded) { %>
-        <p class="<%= css.paragraph %>">
-          <%= t('privacy_policy.ai_usage.credentials_excluded') %>
-        </p>
+      <% if (config.privacy.aiUsage.automatedDecisions) { %>
+        <h3 class="<%= css.tertiary %>"><%= t('privacy_policy.ai_usage.automated_decisions_heading') %></h3>
+        <p class="<%= css.paragraph %>"><%= config.privacy.aiUsage.automatedDecisions %></p>
       <% } %>
-
-      <p class="<%= css.paragraph %>">
-        <% if (config.privacy.aiUsage.automatedDecisionMaking) { %>
-          <%= t('privacy_policy.ai_usage.automated_decision_making') %>
-        <% } else { %>
-          <%= t('privacy_policy.ai_usage.no_automated_decision_making') %>
-        <% } %>
-      </p>
 
       <p class="<%= css.paragraph %>">
         <%- t('privacy_policy.ai_usage.contact', { privacy_email: config.privacy.privacyEmail, link_class: css.link }) %>

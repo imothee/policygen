@@ -1,6 +1,6 @@
 {
   "name": "policygen",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Generate privacy and terms of service policies for your website or app",
   "keywords": [
     "privacy",
@@ -16,12 +16,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/imothee-io/policygen.git",
+    "url": "git+https://github.com/cosmicglue-io/policygen.git",
     "directory": "packages/policygen"
   },
   "homepage": "https://policygen.xyz",
   "bugs": {
-    "url": "https://github.com/imothee-io/policygen/issues"
+    "url": "https://github.com/cosmicglue-io/policygen/issues"
   },
   "bin": {
     "policygen": "./dist/index.js"
@@ -33,9 +33,9 @@
     "README.md"
   ],
   "scripts": {
-    "build": "npm run build:schema && tsc",
+    "build": "pnpm build:schema && tsc",
     "build:schema": "ts-node scripts/generateSchema.ts",
-    "test": "vitest run"
+    "test": "pnpm build && vitest run"
   },
   "dependencies": {
     "ajv": "^8.17.1",

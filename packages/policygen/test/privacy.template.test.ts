@@ -224,6 +224,60 @@ describe("privacy.html.ejs template", () => {
     expect(rendered).toContain("section-coppa");
   });
 
+  test("renders only configured AI handling claims", async () => {
+    const css = getCssStyles("tailwind");
+    const configWithAi = {
+      ...baseConfig,
+      privacy: {
+        ...baseConfig.privacy,
+        aiUsage: {
+          providers: ["openai"],
+          usedFor: ["Summarizing support requests"],
+          dataHandling: "Requests are retained for up to 30 days.",
+          automatedDecisions: "AI suggests routing; a person makes the decision.",
+        },
+      },
+    };
+
+    const rendered = await ejs.render(template, {
+      css,
+      t,
+      config: configWithAi,
+      updated: "January 1, 2025",
+    });
+
+    expect(rendered).toContain("section-ai-usage");
+    expect(rendered).toContain("OpenAI API");
+    expect(rendered).toContain("Summarizing support requests");
+    expect(rendered).toContain("Requests are retained for up to 30 days.");
+    expect(rendered).toContain(
+      "AI suggests routing; a person makes the decision.",
+    );
+    expect(rendered).not.toContain("no-training terms");
+  });
+
+  test("renders readable labels for camelCase data identifiers", async () => {
+    const rendered = await ejs.render(template, {
+      css: getCssStyles("tailwind"),
+      t,
+      config: {
+        ...baseConfig,
+        privacy: {
+          ...baseConfig.privacy,
+          personalInformation: ["ipAddress"],
+          sensitiveInformation: ["criminalHistory"],
+          thirdPartyData: ["socialMedia"],
+        },
+      },
+      updated: "January 1, 2025",
+    });
+
+    expect(rendered).toContain("IP Address");
+    expect(rendered).toContain("Criminal or legal history");
+    expect(rendered).toContain("Social Media data");
+    expect(rendered).not.toContain(">ipAddress<");
+  });
+
   test("HTML tags are properly closed", async () => {
     const css = getCssStyles("tailwind");
     const rendered = await ejs.render(template, {

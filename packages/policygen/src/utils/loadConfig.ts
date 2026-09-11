@@ -41,7 +41,7 @@ export function loadConfig(): PolicygenConfig {
   }
 
   // Use the schema from the dist folder
-  const schemaPath = path.resolve(__dirname, "../config_schema.json");
+  const schemaPath = path.resolve(__dirname, "../../dist/config_schema.json");
   if (!fs.existsSync(schemaPath)) {
     throw new Error(`Schema file not found at ${schemaPath}`);
   }

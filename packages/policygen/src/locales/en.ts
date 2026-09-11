@@ -311,76 +311,60 @@ export default {
       ai_usage: {
         heading: "AI Usage",
         intro:
-          "Some features in our service rely on third-party AI providers for reasoning, summarization, content generation, or related tasks. This section discloses which providers may receive your data and on what terms.",
+          "Some features in our service use AI systems for reasoning, summarization, content generation, or related tasks. This section describes the providers involved and how we use them.",
         providers_heading: "AI providers we use",
         used_for_heading: "How AI is used",
         used_for_intro: "Our service invokes AI for the following purposes:",
-        no_training:
-          "We do not use your content to train AI models. Inputs sent to our AI providers are governed by their no-training terms for API usage.",
-        training_disclosed:
-          "We may use aggregated, de-identified content to improve our service. We will not use your identifiable personal information to train third-party models without your explicit consent.",
-        credentials_excluded:
-          "Credentials, API keys, and other secrets you store with us are never sent to AI providers. The runtime resolves them at the moment of use, after the AI step has decided what to call.",
-        automated_decision_making:
-          "Some AI-driven features may produce outputs that affect you (e.g. routing, prioritization, content moderation). You have the right to request human review of any consequential automated decision; contact us using the email below.",
-        no_automated_decision_making:
-          "AI in our service produces suggestions and content. It does not make consequential automated decisions about you (denying access, eligibility, or similar) without human review.",
+        data_handling_heading: "How AI providers handle data",
+        automated_decisions_heading: "Automated decisions",
         contact:
-          'For questions about our AI usage or to request human review of an automated decision, contact <a href="mailto:{{privacy_email}}" class="{{link_class}}">{{privacy_email}}</a>.',
+          'For questions about our AI usage, contact <a href="mailto:{{privacy_email}}" class="{{link_class}}">{{privacy_email}}</a>.',
         providers: {
           anthropic: {
             name: "Anthropic API",
             url: "https://www.anthropic.com",
-            description:
-              "Direct integration with Anthropic's Claude family of models for reasoning and content generation.",
+            description: "AI model provider.",
           },
           awsBedrock: {
             name: "Amazon Bedrock",
             url: "https://aws.amazon.com/bedrock/",
-            description:
-              "Hosted inference for Anthropic Claude and other foundation models with AWS data-residency and no-training guarantees.",
+            description: "Managed service for accessing foundation models.",
           },
           openai: {
             name: "OpenAI API",
             url: "https://openai.com",
-            description:
-              "OpenAI's GPT family of models for reasoning, summarization, and content generation.",
+            description: "AI model provider.",
           },
           azureOpenAi: {
             name: "Azure OpenAI Service",
             url: "https://azure.microsoft.com/en-us/products/ai-services/openai-service",
-            description:
-              "Hosted OpenAI models with Microsoft Azure data-residency and enterprise compliance guarantees.",
+            description: "Managed service for accessing OpenAI models.",
           },
           googleAi: {
             name: "Google AI / Gemini API",
             url: "https://ai.google.dev",
-            description:
-              "Google's Gemini family of models accessed via the Google AI API.",
+            description: "AI model provider.",
           },
           vertexAi: {
             name: "Google Vertex AI",
             url: "https://cloud.google.com/vertex-ai",
-            description:
-              "Hosted inference for Google and partner foundation models with Google Cloud data-residency guarantees.",
+            description: "Managed service for accessing foundation models.",
           },
           cohere: {
             name: "Cohere API",
             url: "https://cohere.com",
-            description:
-              "Cohere's foundation models for embeddings, classification, and generation.",
+            description: "AI model provider.",
           },
           mistral: {
             name: "Mistral AI",
             url: "https://mistral.ai",
-            description:
-              "Mistral's open and hosted foundation models for reasoning and generation.",
+            description: "AI model provider.",
           },
           ollama: {
             name: "Self-hosted (Ollama)",
             url: "https://ollama.com",
             description:
-              "Locally hosted open-weight models. Inputs do not leave our infrastructure.",
+              "Software for running models on operator-controlled infrastructure.",
           },
         },
       },

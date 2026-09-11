@@ -1,6 +1,11 @@
 import fs from "node:fs";
 import path from "node:path";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
+import {
+  defaultEntityConfig,
+  defaultOutputConfig,
+  defaultTermsConfig,
+} from "../src/config";
 import { loadConfig } from "../src/utils/loadConfig";
 
 describe("loadConfig", () => {
@@ -53,5 +58,26 @@ describe("loadConfig", () => {
     );
 
     expect(() => loadConfig()).toThrow("Invalid `$schema` field format.");
+  });
+
+  test("preserves defaults omitted from a configured nested group", () => {
+    const terms = {
+      ...defaultTermsConfig,
+      liabilityLimitation: true,
+      liabilityLimitationTimeframe: undefined,
+    };
+    fs.writeFileSync(
+      path.resolve(testDir, "policygen.json"),
+      JSON.stringify({
+        $schema: "https://policygen.xyz/schemas/0.7/schema.json",
+        output: defaultOutputConfig,
+        entity: defaultEntityConfig,
+        terms,
+      }),
+    );
+
+    expect(loadConfig().terms?.liabilityLimitationTimeframe).toBe(
+      "twelve (12) months",
+    );
   });
 });

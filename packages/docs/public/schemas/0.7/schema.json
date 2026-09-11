@@ -52,6 +52,27 @@
             "path"
           ],
           "title": "astroLayout"
+        },
+        "astroShell": {
+          "description": "Optional inner shell wrapper rendered inside the Astro Layout.\nUseful when the marketing chrome (nav/footer) lives in a separate\ncomponent from the page Layout.",
+          "type": "object",
+          "properties": {
+            "path": {
+              "description": "Path to the shell component (e.g., \"~/components/MarketingShell.astro\")",
+              "type": "string",
+              "title": "path"
+            },
+            "props": {
+              "$ref": "#/definitions/AstroLayoutProps",
+              "description": "Props to pass to the shell component",
+              "title": "props"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "path"
+          ],
+          "title": "astroShell"
         }
       },
       "additionalProperties": false,
@@ -301,6 +322,45 @@
             "runsLocally"
           ],
           "title": "browserExtension"
+        },
+        "aiUsage": {
+          "description": "AI usage disclosure. When set, renders a dedicated AI section listing\nproviders user data may flow to, what AI is used for, and operator-supplied\ndata-handling and automated-decision disclosures.",
+          "type": "object",
+          "properties": {
+            "providers": {
+              "description": "AI providers user data may flow to",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AiProvider"
+              },
+              "title": "providers"
+            },
+            "usedFor": {
+              "description": "Free-text bullets for what AI is used for (e.g. \"summarizing user inputs\")",
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "title": "usedFor"
+            },
+            "dataHandling": {
+              "description": "Factual description of data sent, retained, or used for training",
+              "type": "string",
+              "title": "dataHandling"
+            },
+            "automatedDecisions": {
+              "description": "Factual description of consequential automated decisions, when applicable",
+              "type": "string",
+              "title": "automatedDecisions"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "dataHandling",
+            "providers",
+            "usedFor"
+          ],
+          "title": "aiUsage"
         },
         "cpraCompliance": {
           "description": "CPRA (California Privacy Rights Act) compliance.\nAdds California-specific rights: right to correct data, limit sensitive data use,\nand opt-out of automated decision-making. Required if you have CA users and\nmeet CPRA thresholds.",
@@ -726,6 +786,22 @@
         "cookies",
         "localStorage",
         "credentials"
+      ]
+    },
+    "AiProvider": {
+      "description": "AI / LLM provider used by the product. Values are stable identifiers\nresolved against translation strings to render provider name + URL +\ndescription. Add new providers here as they're adopted.",
+      "title": "AiProvider",
+      "type": "string",
+      "enum": [
+        "anthropic",
+        "awsBedrock",
+        "openai",
+        "azureOpenAi",
+        "googleAi",
+        "vertexAi",
+        "cohere",
+        "mistral",
+        "ollama"
       ]
     },
     "TransferMechanism": {

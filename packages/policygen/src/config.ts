@@ -110,22 +110,18 @@ export enum AiProvider {
 
 /**
  * AI usage disclosure block. Surfaces in privacy as a dedicated section
- * naming the providers data flows to, what AI is used for, whether user
- * data trains models, whether credentials/secrets are excluded from LLM
- * inputs, and whether AI makes consequential automated decisions about
- * users (relevant for GDPR Art 22, CPRA, Colorado AI Act, EU AI Act).
+ * naming the providers data flows to, what AI is used for, and the
+ * operator-supplied data-handling and automated-decision disclosures.
  */
 export type AiUsageConfig = {
   /** AI providers user data may flow to */
   providers: AiProvider[];
   /** Free-text bullets for what AI is used for (e.g. "summarizing user inputs") */
   usedFor: string[];
-  /** Whether you train any models on user data (almost always false) */
-  noTraining: boolean;
-  /** Whether secrets/credentials are excluded from LLM inputs */
-  credentialsExcluded: boolean;
-  /** Whether AI makes consequential automated decisions about users */
-  automatedDecisionMaking: boolean;
+  /** Factual description of data sent, retained, or used for training */
+  dataHandling: string;
+  /** Factual description of consequential automated decisions, when applicable */
+  automatedDecisions?: string;
 };
 
 export enum ProhibitedUses {
@@ -269,9 +265,8 @@ export type PrivacyConfig = {
   browserExtension?: BrowserExtensionConfig;
   /**
    * AI usage disclosure. When set, renders a dedicated AI section listing
-   * providers user data may flow to, what AI is used for, no-training
-   * commitment, credential exclusion, and automated-decision disclosure.
-   * Required for any product that sends user data to LLMs / AI APIs.
+   * providers user data may flow to, what AI is used for, and operator-supplied
+   * data-handling and automated-decision disclosures.
    */
   aiUsage?: AiUsageConfig;
 

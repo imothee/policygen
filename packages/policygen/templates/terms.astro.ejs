@@ -2,7 +2,7 @@
 <% if (config.output.astroLayout) { %>
 import Layout from "<%- config.output.astroLayout.path %>";
 <% } %>
-<% if (config.output.astroShell) { %>
+<% if (config.output.astroLayout && config.output.astroShell) { %>
 import Shell from "<%- config.output.astroShell.path %>";
 <% } %>
 ---

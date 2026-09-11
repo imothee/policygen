@@ -78,6 +78,7 @@ describe("Astro template rendering", () => {
       expect(rendered).toContain("</body>");
       expect(rendered).toContain("</html>");
       expect(rendered).not.toContain("import Layout");
+      expect(rendered).not.toContain("import Shell");
     });
 
     it("should render with Layout when astroLayout is configured", () => {
@@ -128,6 +129,34 @@ describe("Astro template rendering", () => {
 
       expect(rendered).toContain("<Layout>");
       expect(rendered).not.toContain("useContainer");
+    });
+
+    it("should render a shell inside the layout", () => {
+      const baseConfig = getBaseConfig();
+      const rendered = ejs.render(privacyTemplate, {
+        ...getRenderData(),
+        config: {
+          ...baseConfig,
+          output: {
+            ...baseConfig.output,
+            astroLayout: { path: "~/layouts/Layout.astro" },
+            astroShell: {
+              path: "~/components/MarketingShell.astro",
+              props: { section: "legal" },
+            },
+          },
+        },
+      });
+
+      expect(rendered).toContain(
+        'import Shell from "~/components/MarketingShell.astro"',
+      );
+      expect(rendered.indexOf("<Layout>")).toBeLessThan(
+        rendered.indexOf('<Shell section="legal">'),
+      );
+      expect(rendered.indexOf("</Shell>")).toBeLessThan(
+        rendered.indexOf("</Layout>"),
+      );
     });
   });
 
